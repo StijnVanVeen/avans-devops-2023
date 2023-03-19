@@ -13,7 +13,7 @@ public abstract class BacklogItem : IItem
     private List<IItem> Items { get; set; }
     public IBacklogItemState State { get; set; }
 
-    protected BacklogItem(string title, string description)
+    public BacklogItem(string title, string description)
     {
         TodoState = new TodoState(this);
         DoingState = new DoingState(this);
