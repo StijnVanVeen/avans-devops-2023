@@ -1,0 +1,48 @@
+﻿using Avans_DevOps_Domain.Exceptions;
+using Avans_DevOps_Domain.Items;
+
+namespace Avans_DevOps_Domain;
+
+public class TestingState : IBacklogItemState
+{
+    protected BacklogItem item;
+    public TestingState(BacklogItem item)
+    {
+        this.item = item;
+    }
+    public void toToDoState()
+    {
+        Console.WriteLine("Transitioning from Testing state to ToDo state, testing did not pass");
+        item.State = item.TodoState;
+    }
+
+    public void toDoingState()
+    {
+        Console.WriteLine("can't go back in states");
+        throw new IlligalStateTransitionException();
+    }
+
+    public void toReadyForTestingState()
+    {
+        Console.WriteLine("can't go back in states");
+        throw new IlligalStateTransitionException();
+    }
+
+    public void toTestingState()
+    {
+        Console.WriteLine("can't go to same state");
+        throw new IlligalStateTransitionException();
+    }
+
+    public void toTestedState()
+    {
+        Console.WriteLine("Transitioning from Testing state to Tested state, testing passed");
+        item.State = item.TestedState;
+    }
+
+    public void toDoneState()
+    {
+        Console.WriteLine("can't skip states");
+        throw new IlligalStateTransitionException();
+    }
+}
