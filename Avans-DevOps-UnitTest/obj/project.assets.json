@@ -6095,8 +6095,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/home/ker0h/projects/csharp/avans-devops-2023/Avans-DevOps-Domain/Avans-DevOps-Domain.csproj": {
-              "projectPath": "/home/ker0h/projects/csharp/avans-devops-2023/Avans-DevOps-Domain/Avans-DevOps-Domain.csproj"
             }
           }
         }

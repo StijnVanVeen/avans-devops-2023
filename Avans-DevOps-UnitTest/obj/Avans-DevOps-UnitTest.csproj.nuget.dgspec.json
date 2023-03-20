@@ -4,7 +4,6 @@
     "/home/ker0h/projects/csharp/avans-devops-2023/Avans-DevOps-UnitTest/Avans-DevOps-UnitTest.csproj": {}
   },
   "projects": {
-    "/home/ker0h/projects/csharp/avans-devops-2023/Avans-DevOps-Domain/Avans-DevOps-Domain.csproj": {
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "/home/ker0h/projects/csharp/avans-devops-2023/Avans-DevOps-Domain/Avans-DevOps-Domain.csproj",
@@ -25,7 +24,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\stijn\\RiderProjects\\avans-devops-2023\\Avans-DevOps-Domain\\Avans-DevOps-Domain.csproj": {
+                "projectPath": "C:\\Users\\stijn\\RiderProjects\\avans-devops-2023\\Avans-DevOps-Domain\\Avans-DevOps-Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
