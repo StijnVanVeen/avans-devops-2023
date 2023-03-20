@@ -3,13 +3,13 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net7.0</TargetFramework>
-        <RootNamespace>Avans_DevOps_Domain</RootNamespace>
+        <RootNamespace>Avans_DevOps_Console</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Avans-DevOps-Domain\Avans-DevOps-Domain.csproj" />
+        <ProjectReference Include="..\Avans-DevOps-Domain\Avans-DevOps-Domain.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <RootNamespace>Avans_DevOps_UnitTest</RootNamespace>
+        <RootNamespace>Avans_DevOps_ProcesCyclusTest</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
@@ -21,10 +21,6 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Avans-DevOps-Domain\Avans-DevOps-Domain.csproj"/>
     </ItemGroup>
 
 </Project>
