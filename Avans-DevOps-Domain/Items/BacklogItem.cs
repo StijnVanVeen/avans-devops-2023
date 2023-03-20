@@ -22,9 +22,9 @@ public abstract class BacklogItem : IItem
         TestedState = new TestedState(this);
         DoneState = new DoneState(this);
         
-        this.Title = title;
-        this.Description = description;
-        this.Items = new List<IItem>();
+        Title = title;
+        Description = description;
+        Items = new List<IItem>();
         State = TodoState;
     }
 
@@ -56,5 +56,9 @@ public abstract class BacklogItem : IItem
     {
         State.toDoneState();
     }
-    
+
+    public void setState(IBacklogItemState state)
+    {
+        State = state;
+    }
 }
