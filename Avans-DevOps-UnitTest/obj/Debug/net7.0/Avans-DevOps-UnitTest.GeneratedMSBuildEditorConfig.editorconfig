@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Avans_DevOps_UnitTest
-build_property.ProjectDir = C:\Users\stijn\RiderProjects\avans-devops-2023\Avans-DevOps-UnitTest\
+build_property.ProjectDir = /home/ker0h/projects/csharp/avans-devops-2023/Avans-DevOps-UnitTest/

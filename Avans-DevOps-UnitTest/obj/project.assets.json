@@ -1808,6 +1808,16 @@
         "build": {
           "build/netcoreapp3.1/xunit.runner.visualstudio.props": {}
         }
+      },
+      "Avans-DevOps-Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Avans-DevOps-Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Avans-DevOps-Domain.dll": {}
+        }
       }
     }
   },
@@ -6044,10 +6054,16 @@
         "xunit.runner.visualstudio.2.4.5.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "Avans-DevOps-Domain/1.0.0": {
+      "type": "project",
+      "path": "../Avans-DevOps-Domain/Avans-DevOps-Domain.csproj",
+      "msbuildProject": "../Avans-DevOps-Domain/Avans-DevOps-Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Avans-DevOps-Domain >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.3.2",
       "coverlet.collector >= 3.1.2",
       "xunit >= 2.4.2",
@@ -6055,38 +6071,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\stijn\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/home/ker0h/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stijn\\RiderProjects\\avans-devops-2023\\Avans-DevOps-UnitTest\\Avans-DevOps-UnitTest.csproj",
+      "projectUniqueName": "/home/ker0h/projects/csharp/avans-devops-2023/Avans-DevOps-UnitTest/Avans-DevOps-UnitTest.csproj",
       "projectName": "Avans-DevOps-UnitTest",
-      "projectPath": "C:\\Users\\stijn\\RiderProjects\\avans-devops-2023\\Avans-DevOps-UnitTest\\Avans-DevOps-UnitTest.csproj",
-      "packagesPath": "C:\\Users\\stijn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stijn\\RiderProjects\\avans-devops-2023\\Avans-DevOps-UnitTest\\obj\\",
+      "projectPath": "/home/ker0h/projects/csharp/avans-devops-2023/Avans-DevOps-UnitTest/Avans-DevOps-UnitTest.csproj",
+      "packagesPath": "/home/ker0h/.nuget/packages/",
+      "outputPath": "/home/ker0h/projects/csharp/avans-devops-2023/Avans-DevOps-UnitTest/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\stijn\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/ker0h/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\stijn\\RiderProjects\\avans-devops-2023\\Avans-DevOps-Domain\\Avans-DevOps-Domain.csproj": {
-              "projectPath": "C:\\Users\\stijn\\RiderProjects\\avans-devops-2023\\Avans-DevOps-Domain\\Avans-DevOps-Domain.csproj"
             }
           }
         }
@@ -6138,7 +6146,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/ker0h/.dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
       }
     }
   }
