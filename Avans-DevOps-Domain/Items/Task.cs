@@ -1,8 +1,8 @@
 ﻿namespace Avans_DevOps_Domain.Items;
 
-public class Task : ItemTask
+public class WorkTask : ItemTask
 {
-    public Task(string title, string description) : base(title, description){
-
-		}
+    public WorkTask(string title, string description) : base(title, description)
+    {
+    }
 }
