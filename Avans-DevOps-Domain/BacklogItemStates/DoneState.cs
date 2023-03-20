@@ -5,8 +5,8 @@ namespace Avans_DevOps_Domain;
 
 public class DoneState : IBacklogItemState
 {
-    protected BacklogItem item;
-    public DoneState(BacklogItem item)
+    protected IItem item;
+    public DoneState(IItem item)
     {
         this.item = item;
     }

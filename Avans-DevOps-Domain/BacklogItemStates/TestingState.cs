@@ -5,8 +5,8 @@ namespace Avans_DevOps_Domain;
 
 public class TestingState : IBacklogItemState
 {
-    protected BacklogItem item;
-    public TestingState(BacklogItem item)
+    protected IItem item;
+    public TestingState(IItem item)
     {
         this.item = item;
     }

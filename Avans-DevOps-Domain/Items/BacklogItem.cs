@@ -57,8 +57,8 @@ public abstract class BacklogItem : IItem
         State.toDoneState();
     }
 
-    public void setState(IBacklogItemState state)
+    public void AddItem(IItem item)
     {
-        State = state;
+        Items.Add(item);
     }
 }

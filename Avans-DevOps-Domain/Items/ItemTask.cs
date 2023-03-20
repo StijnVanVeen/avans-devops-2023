@@ -14,12 +14,12 @@ public abstract class ItemTask : IItem
     
     protected ItemTask(string title, string description)
     {
-        //TodoState = new TodoState(this);
-        //DoingState = new DoingState(this);
-        //ReadyForTestingState = new ReadyForTestingstate(this);
-        //TestingState = new TestingState(this);
-        //TestedState = new TestedState(this);
-        //DoneState = new DoneState(this);
+        TodoState = new TodoState(this);
+        DoingState = new DoingState(this);
+        ReadyForTestingState = new ReadyForTestingstate(this);
+        TestingState = new TestingState(this);
+        TestedState = new TestedState(this);
+        DoneState = new DoneState(this);
         
         Title = title;
         Description = description;
