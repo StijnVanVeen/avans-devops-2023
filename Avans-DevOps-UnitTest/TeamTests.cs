@@ -1,11 +1,11 @@
 using Avans_DevOps_Domain.Team;
 using Avans_DevOps_Domain.Team.Members;
+using Moq;
 
 namespace Avans_DevOps_UnitTest;
 
-public class UnitTest_Teams
+public class TeamTests
 {
-    // Team class tests
     [Fact]
     public void AddDeveloper_AddsNewDeveloperToMembersList()
     {
@@ -13,8 +13,10 @@ public class UnitTest_Teams
         var testTeam = new Team("TestTeam");
         var name = "John Doe";
         var email = "j.doe@avans.nl";
+        
         // Act
         testTeam.AddDeveloper(name, email);
+        
         // Assert
         var member = testTeam.GetMember(name);
         Assert.NotNull(member);
