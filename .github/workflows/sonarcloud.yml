@@ -52,6 +52,6 @@ jobs:
         shell: powershell
         run: |
           dotnet sonarscanner begin /k:"StijnVanVeen_avans-devops-2023" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html
-          dotnet build –no-incremental
+          dotnet build -–no-incremental
           dotnet dotcover test --dcReportType=HTML
           dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
