@@ -11,10 +11,11 @@ jobs:
   qodana:
     runs-on: ubuntu-latest
     steps:
+      - name: 'build'
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: 'Qodana Scan'
+      - name: 'Qodana cloud Scan'
         uses: JetBrains/qodana-action@main
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
