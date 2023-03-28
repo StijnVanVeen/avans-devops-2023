@@ -32,7 +32,7 @@ jobs:
         run: dotnet build
 
       - name: Test with the dotnet CLI
-        run: dotnet test --collect:"XPlat Code Coverage"
+        run: dotnet test --collect:"XPlat Code Coverage" --logger:trx
         env:
           ASPNETCORE_ENVIRONMENT: Development
 
