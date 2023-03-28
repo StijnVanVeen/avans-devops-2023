@@ -1,0 +1,22 @@
+name: .NET Core
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+       dotnet-version: 7.0.x
+    - name: Build with dotnet
+      run: dotnet build ./avans-devops-2023.sln --configuration Release
+    - name: Unit Tests
+      run: dotnet test ./avans-devops-2023.sln /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
