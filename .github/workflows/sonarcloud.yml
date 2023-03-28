@@ -44,7 +44,7 @@ jobs:
       - name: Install dotnet coverage
         shell: powershell
         run: |
-          dotnet tool install --global dotnet-coverage
+          dotnet tool install --global JetBrains.dotCover.GlobalTool
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
@@ -56,3 +56,9 @@ jobs:
           dotnet test --collect "Code Coverage"
           dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          dotnet sonarscanner begin /k:"StijnVanVeen_avans-devops-2023"
+          /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html
+          dotnet build –no-incremental
+          dotnet dotcover test --dcReportType=HTML
+          dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
