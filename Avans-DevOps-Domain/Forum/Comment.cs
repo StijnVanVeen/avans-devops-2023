@@ -23,9 +23,4 @@ public class Comment : ForumComponent
     {
         Comments.Add(comment);
     }
-
-    public void Remove(ForumComponent component)
-    {
-        Comments.Remove((Comment) component);
-    }
 }

@@ -2,8 +2,17 @@ namespace Avans_DevOps_Domain.Pipelines.Actions;
 
 public class BuildAction : IAction
 {
-    public void Execute()
+    public bool Execute()
     {
-        Console.WriteLine("Building...");
+        try
+        {
+            Console.WriteLine("Building...");
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+            return false;
+        }
     }
 }

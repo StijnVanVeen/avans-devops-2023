@@ -4,9 +4,9 @@ public class PipelineBuilderDirector
 {
     public IBuilder Builder { get; set; }
     
-    public PipelineBuilderDirector(IBuilder builder)
+    public PipelineBuilderDirector()
     {
-        Builder = builder;
+        Builder = null;
     }
     
     public void SetBuilder(IBuilder builder)
@@ -14,16 +14,15 @@ public class PipelineBuilderDirector
         Builder = builder;
     }
 
-    public IPipeline MakePipeline(IBuilder builder)
+    public void MakePipeline()
     {
-        builder.AddSourceAction();
-        builder.AddPackageAction();
-        builder.AddBuildAction();
-        builder.AddTestAction();
-        builder.AddAnalyseAction();
-        builder.AddUtilityAction();
-        builder.AddDeployAction();
-        
-        return builder.GetResult();
+        Builder.Reset();
+        Builder.AddSourceAction();
+        Builder.AddPackageAction();
+        Builder.AddBuildAction();
+        Builder.AddTestAction();
+        Builder.AddAnalyseAction();
+        Builder.AddUtilityAction();
+        Builder.AddDeployAction();
     }
 }

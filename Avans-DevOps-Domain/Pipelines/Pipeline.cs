@@ -10,22 +10,25 @@ public class Pipeline : IPipeline
     {
         Actions = new List<IAction>();
     }
-    
+
     public void AddAction(IAction action)
     {
         Actions.Add(action);
     }
-    
-    public void RemoveAction(IAction action)
+
+    public bool Execute()
     {
-        Actions.Remove(action);
-    }
-    
-    public void Execute()
-    {
+        bool result = false;
+
         foreach (var action in Actions)
         {
-            action.Execute();
+            result = action.Execute();
+            if (result == false)
+            {
+                break;
+            }
         }
+
+        return result;
     }
 }

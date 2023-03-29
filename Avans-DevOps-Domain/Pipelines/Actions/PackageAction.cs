@@ -2,8 +2,17 @@ namespace Avans_DevOps_Domain.Pipelines.Actions;
 
 public class PackageAction : IAction
 {
-    public void Execute()
+    public bool Execute()
     {
-        Console.WriteLine("Packaging...");
+        try
+        {
+            Console.WriteLine("Packaging...");
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+            return false;
+        }
     }
 }

@@ -6,101 +6,101 @@ namespace Avans_DevOps_UnitTest;
 
 public class TeamTests
 {
+    private readonly Team TestTeam = new Team("TestTeam");
+    private readonly string Name = "John Doe";
+    private readonly string Email = "j.doe@avans.nl";
+    
     [Fact]
     public void AddDeveloper_AddsNewDeveloperToMembersList()
     {
         // Arrange
-        var testTeam = new Team("TestTeam");
-        var name = "John Doe";
-        var email = "j.doe@avans.nl";
+        TestTeam.Members.Clear();
         
         // Act
-        testTeam.AddDeveloper(name, email);
+        TestTeam.AddDeveloper(Name, Email);
         
         // Assert
-        var member = testTeam.GetMember(name);
+        var member = TestTeam.GetMember(Name);
         Assert.NotNull(member);
         Assert.IsType<Developer>(member);
-        Assert.Equal(email, member.Email);
+        Assert.Equal(Name, member.Name);
+        Assert.Equal(Email, member.Email);
     }
 
     [Fact]
     public void AddScrumMaster_AddsNewScrumMasterToMembersList()
     {
         // Arrange
-        var testTeam = new Team("TestTeam");
-        var name = "John Doe";
-        var email = "j.doe@avans.nl";
-
+        TestTeam.Members.Clear();
+        
         // Act
-        testTeam.AddScrumMaster(name, email);
+        TestTeam.AddScrumMaster(Name, Email);
 
         // Assert
-        var member = testTeam.GetMember(name);
+        var member = TestTeam.GetMember(Name);
         Assert.NotNull(member);
         Assert.IsType<ScrumMaster>(member);
-        Assert.Equal(email, member.Email);
+        Assert.Equal(Name, member.Name);
+        Assert.Equal(Email, member.Email);
     }
 
     [Fact]
     public void AddProductOwner_AddsNewProductOwnerToMembersList()
     {
         // Arrange
-        var testTeam = new Team("TestTeam");
-        var name = "John Doe";
-        var email = "j.doe@company.com";
+        TestTeam.Members.Clear();
 
         // Act
-        testTeam.AddProductOwner(name, email);
+        TestTeam.AddProductOwner(Name, Email);
 
         // Assert
-        var member = testTeam.GetMember(name);
+        var member = TestTeam.GetMember(Name);
         Assert.NotNull(member);
         Assert.IsType<ProductOwner>(member);
-        Assert.Equal(email, member.Email);
+        Assert.Equal(Name, member.Name);
+        Assert.Equal(Email, member.Email);
     }
 
     [Fact]
     public void AddTester_AddsNewTesterToMembersList()
     {
         // Arrange
-        var testTeam = new Team("TestTeam");
-        var name = "John Doe";
-        var email = "j.doe@avans.nl";
+        TestTeam.Members.Clear();
 
         // Act
-        testTeam.AddTester(name, email);
+        TestTeam.AddTester(Name, Email);
 
         // Assert
-        var member = testTeam.GetMember(name);
+        TeamMember member = TestTeam.GetMember(Name);
         Assert.NotNull(member);
         Assert.IsType<Tester>(member);
-        Assert.Equal(email, member.Email);
+        Assert.Equal(Name, member.Name);
+        Assert.Equal(Email, member.Email);
     }
 
     [Fact]
     public void DeleteMember_DeletesMemberFromMembersList()
     {
         // Arrange
-        var testTeam = new Team("TestTeam");
-        var member = new Developer("John Doe", "j.doe@avans.nl");
-        testTeam.Members.Add(member);
+        TestTeam.Members.Clear();
+        TeamMember member = new Developer(Name, Email);
 
         // Act
-        testTeam.DeleteMember(member);
+        TestTeam.AddDeveloper(Name, Email);
+        TestTeam.DeleteMember(member);
 
         // Assert
-        Assert.DoesNotContain(member, testTeam.Members);
+        Assert.DoesNotContain(member, TestTeam.Members);
     }
 
     [Fact]
     public void GetMember_ReturnsNullWhenMemberNotFound()
     {
         // Arrange
-        var testTeam = new Team("TestTeam");
-        
+        TestTeam.Members.Clear();
+
         // Act
-        var member = testTeam.GetMember("John Doe");
+        var member = TestTeam.GetMember("Jane Doe");
         
         // Assert
         Assert.Null(member);

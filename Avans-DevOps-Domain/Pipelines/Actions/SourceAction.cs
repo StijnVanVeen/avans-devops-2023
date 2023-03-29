@@ -2,8 +2,17 @@ namespace Avans_DevOps_Domain.Pipelines.Actions;
 
 public class SourceAction : IAction
 {
-    public void Execute()
+    public bool Execute()
     {
-        Console.WriteLine("Source action executed...");
+        try
+        {
+            Console.WriteLine("Getting source...");
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+            return false;
+        }
     }
 }

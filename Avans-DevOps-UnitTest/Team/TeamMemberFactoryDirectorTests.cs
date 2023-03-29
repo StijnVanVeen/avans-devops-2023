@@ -8,8 +8,8 @@ namespace Avans_DevOps_UnitTest;
 public class TeamMemberFactoryDirectorTests
 {
     private readonly Mock<TeamMemberFactoryDirector> _director;
-    private readonly string _name = "John Doe";
-    private readonly string _email = "j.doe@avans.nl";
+    private const string _name = "John Doe";
+    private const string _email = "j.doe@avans.nl";
 
     public TeamMemberFactoryDirectorTests()
     {
@@ -23,7 +23,10 @@ public class TeamMemberFactoryDirectorTests
         var result = _director.Object.CreateDeveloper(_name, _email);
         
         // Assert
-        Assert.Equal(result.GetType(), typeof(Developer));
+        Assert.NotNull(result);
+        Assert.IsType<Developer>(result);
+        Assert.Equal(_name, result.Name);
+        Assert.Equal(_email, result.Email);
     }
     
     [Fact]
@@ -33,7 +36,10 @@ public class TeamMemberFactoryDirectorTests
         var result = _director.Object.CreateScrumMaster(_name, _email);
         
         // Assert
-        Assert.Equal(result.GetType(), typeof(ScrumMaster));
+        Assert.NotNull(result);
+        Assert.IsType<ScrumMaster>(result);
+        Assert.Equal(_name, result.Name);
+        Assert.Equal(_email, result.Email);
     }
     
     [Fact]
@@ -43,7 +49,10 @@ public class TeamMemberFactoryDirectorTests
         var result = _director.Object.CreateProductOwner(_name, _email);
         
         // Assert
-        Assert.Equal(result.GetType(), typeof(ProductOwner));
+        Assert.NotNull(result);
+        Assert.IsType<ProductOwner>(result);
+        Assert.Equal(_name, result.Name);
+        Assert.Equal(_email, result.Email);
     }
     
     [Fact]
@@ -53,6 +62,9 @@ public class TeamMemberFactoryDirectorTests
         var result = _director.Object.CreateTester(_name, _email);
         
         // Assert
-        Assert.Equal(result.GetType(), typeof(Tester));
+        Assert.NotNull(result);
+        Assert.IsType<Tester>(result);
+        Assert.Equal(_name, result.Name);
+        Assert.Equal(_email, result.Email);
     }
 }

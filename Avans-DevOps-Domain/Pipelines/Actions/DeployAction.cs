@@ -2,8 +2,17 @@ namespace Avans_DevOps_Domain.Pipelines.Actions;
 
 public class DeployAction : IAction
 {
-    public void Execute()
+    public bool Execute()
     {
-        Console.WriteLine("Deploying...");
+        try
+        {
+            Console.WriteLine("Deploying...");
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+            return false;
+        }
     }
 }

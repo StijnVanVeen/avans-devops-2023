@@ -2,8 +2,17 @@ namespace Avans_DevOps_Domain.Pipelines.Actions;
 
 public class UtilityAction : IAction
 {
-    public void Execute()
+    public bool Execute()
     {
-        Console.WriteLine("Utility action executed...");
+        try 
+        {
+            Console.WriteLine("Utility...");
+            return true;
+        } 
+        catch (Exception e) 
+        {
+            Console.WriteLine("Error: " + e.Message);
+            return false;
+        }
     }
 }

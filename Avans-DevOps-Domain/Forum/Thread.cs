@@ -36,12 +36,7 @@ public class Thread : ForumComponent
     {
         Children.Add(component);
     }
-    
-    public void Remove(ForumComponent component)
-    {
-        Children.Remove(component);
-    }
-    
+
     public void toNextState()
     {
         State.toNextState();

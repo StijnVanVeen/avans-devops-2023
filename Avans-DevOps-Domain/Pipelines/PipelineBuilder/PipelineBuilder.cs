@@ -53,7 +53,7 @@ public class PipelineBuilder : IBuilder
     
     public IPipeline GetResult()
     {
-        var result = Pipeline;
+        IPipeline result = Pipeline;
         Reset();
         return result;
     }
