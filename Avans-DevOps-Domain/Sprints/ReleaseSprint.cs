@@ -1,4 +1,5 @@
-﻿using Avans_DevOps_Domain.SprintStates;
+﻿using Avans_DevOps_Domain.Backlog;
+using Avans_DevOps_Domain.SprintStates;
 
 namespace Avans_DevOps_Domain.Sprints;
 
@@ -15,6 +16,7 @@ public class ReleaseSprint : ISprint
     private DateOnly _startDate;
     private DateOnly _endDate;
     public ISprintState State { get; set; }
+    public SprintBacklog Backlog { get; set; }
 
     public ReleaseSprint(string name, DateOnly startDate, DateOnly endDate)
     {
@@ -29,6 +31,7 @@ public class ReleaseSprint : ISprint
         _startDate = startDate;
         _endDate = endDate;
         State = InitialState;
+        Backlog = new SprintBacklog();
     }
 
     public string Name

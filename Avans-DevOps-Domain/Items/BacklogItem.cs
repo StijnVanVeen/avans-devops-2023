@@ -1,4 +1,6 @@
-﻿namespace Avans_DevOps_Domain.Items;
+﻿using Avans_DevOps_Domain.Publisher;
+
+namespace Avans_DevOps_Domain.Items;
 
 public abstract class BacklogItem : IItem
 {
@@ -8,10 +10,12 @@ public abstract class BacklogItem : IItem
     public IBacklogItemState TestingState { get; }
     public IBacklogItemState TestedState { get; }
     public IBacklogItemState DoneState { get; }
-    private string Title { get; set; }
-    private string Description { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+
     private List<IItem> Items { get; set; }
     public IBacklogItemState State { get; set; }
+    public IEventPublisher Publisher { get; set; }
 
     public BacklogItem(string title, string description)
     {
@@ -21,6 +25,7 @@ public abstract class BacklogItem : IItem
         TestingState = new TestingState(this);
         TestedState = new TestedState(this);
         DoneState = new DoneState(this);
+        Publisher = new BacklogItemEventPublisher(this);
         
         Title = title;
         Description = description;
@@ -60,5 +65,23 @@ public abstract class BacklogItem : IItem
     public void AddItem(IItem item)
     {
         Items.Add(item);
+    }
+    public string Operation()
+    {
+        int i = 0;
+        string result = Title + " Branch( ";
+
+        foreach (var item in Items)
+        {
+            result += item.Operation();
+            if (i != Items.Count - 1)
+            {
+                result += " + ";
+            }
+
+            i++;
+        }
+
+        return result + " )";
     }
 }

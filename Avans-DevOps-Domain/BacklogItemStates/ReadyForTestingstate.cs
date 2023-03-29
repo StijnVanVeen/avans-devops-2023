@@ -30,7 +30,6 @@ public class ReadyForTestingstate: IBacklogItemState
 
     public void toTestingState()
     {
-        Console.WriteLine("Transitioning from Doing state to Ready for testing state");
         item.State = item.TestingState;
     }
 
