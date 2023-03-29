@@ -1,4 +1,6 @@
-﻿namespace Avans_DevOps_Domain.Items;
+﻿using Avans_DevOps_Domain.Publisher;
+
+namespace Avans_DevOps_Domain.Items;
 
 public abstract class ItemTask : IItem
 {
@@ -8,8 +10,10 @@ public abstract class ItemTask : IItem
     public IBacklogItemState TestingState { get; }
     public IBacklogItemState TestedState { get; }
     public IBacklogItemState DoneState { get; }
-    private string Title { get; set; }
-    private string Description { get; set; }
+    public IEventPublisher Publisher { get; set; }
+    public  string Title { get; set; }
+    public  string Description { get; set; }
+
     public IBacklogItemState State { get; set; }
     
     protected ItemTask(string title, string description)
@@ -20,9 +24,43 @@ public abstract class ItemTask : IItem
         TestingState = new TestingState(this);
         TestedState = new TestedState(this);
         DoneState = new DoneState(this);
+        Publisher = new BacklogItemEventPublisher(this);
         
         Title = title;
         Description = description;
         State = TodoState;
+    }
+    
+    public void ChangeStateToToDo()
+    {
+        State.toToDoState();
+    }
+    public void ChangeStateToDoing()
+    {
+        State.toDoingState();
+    }
+
+    public void ChangeStateToReadyForTesting()
+    {
+        State.toReadyForTestingState();
+    }
+
+    public void ChangeStateToTesting()
+    {
+        State.toTestingState();
+    }
+
+    public void ChangeStateToTested()
+    {
+        State.toTestedState();
+    }
+
+    public void ChangeStateToDone()
+    {
+        State.toDoneState();
+    }
+    public string Operation()
+    {
+        return Title;
     }
 }
