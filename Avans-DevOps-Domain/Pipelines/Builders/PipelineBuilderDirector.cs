@@ -4,9 +4,9 @@ public class PipelineBuilderDirector
 {
     public IBuilder Builder { get; set; }
     
-    public PipelineBuilderDirector()
+    public PipelineBuilderDirector(IBuilder builder)
     {
-        Builder = null;
+        Builder = builder;
     }
     
     public void SetBuilder(IBuilder builder)

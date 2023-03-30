@@ -4,15 +4,7 @@ public class PackageAction : IAction
 {
     public bool Execute()
     {
-        try
-        {
-            Console.WriteLine("Packaging...");
-            return true;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Error: " + e.Message);
-            return false;
-        }
+        Console.WriteLine("Packaging...");
+        return true;
     }
 }

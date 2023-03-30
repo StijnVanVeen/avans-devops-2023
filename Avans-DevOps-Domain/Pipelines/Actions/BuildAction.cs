@@ -4,15 +4,7 @@ public class BuildAction : IAction
 {
     public bool Execute()
     {
-        try
-        {
-            Console.WriteLine("Building...");
-            return true;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Error: " + e.Message);
-            return false;
-        }
+        Console.WriteLine("Building...");
+        return true;
     }
 }

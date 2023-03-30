@@ -34,11 +34,13 @@ public class Thread : ForumComponent
     
     public void Add(ForumComponent component)
     {
+        Console.WriteLine("Adding component to thread...");
         Children.Add(component);
     }
 
     public void toNextState()
     {
+        Console.WriteLine("Changing thread state...");
         State.toNextState();
     }
 }

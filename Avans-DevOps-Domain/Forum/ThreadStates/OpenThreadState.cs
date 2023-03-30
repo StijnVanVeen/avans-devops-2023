@@ -14,6 +14,7 @@ public class OpenThreadState : IThreadState
 
     public void toNextState()
     {
+        Console.WriteLine("Closing thread...");
         _thread.State = _thread.ClosedState;
     }
 }

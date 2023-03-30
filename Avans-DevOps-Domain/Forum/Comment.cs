@@ -21,6 +21,7 @@ public class Comment : ForumComponent
 
     public void Add(Comment comment)
     {
+        Console.WriteLine("Adding reply to comment...");
         Comments.Add(comment);
     }
 }

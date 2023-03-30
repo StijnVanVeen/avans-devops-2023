@@ -18,6 +18,8 @@ public class Pipeline : IPipeline
 
     public bool Execute()
     {
+        Console.WriteLine("Executing pipeline...");
+        
         bool result = false;
 
         foreach (var action in Actions)
@@ -25,8 +27,15 @@ public class Pipeline : IPipeline
             result = action.Execute();
             if (result == false)
             {
+                Console.WriteLine("Pipeline failed!");
+                Console.WriteLine("Stopping pipeline...");
                 break;
             }
+        }
+        
+        if (result)
+        {
+            Console.WriteLine("Pipeline succeeded!");
         }
 
         return result;
