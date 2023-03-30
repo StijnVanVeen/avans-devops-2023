@@ -8,10 +8,12 @@ public class PipelineBuilderDirectorTests
     public void SetBuilder_Should_Set_Builder_Property()
     {
         // Arrange
-        var director = new PipelineBuilderDirector();
-        var builder = new PipelineBuilder();
+        var oldBuilder = new PipelineBuilder();
+        var director = new PipelineBuilderDirector(oldBuilder);
+
 
         // Act
+        var builder = new PipelineBuilder();
         director.SetBuilder(builder);
 
         // Assert
@@ -22,9 +24,8 @@ public class PipelineBuilderDirectorTests
     public void MakePipeline_Should_Construct_Pipeline()
     {
         // Arrange
-        var director = new PipelineBuilderDirector();
         var builder = new PipelineBuilder();
-        director.SetBuilder(builder);
+        var director = new PipelineBuilderDirector(builder);
 
         // Act
         director.MakePipeline();

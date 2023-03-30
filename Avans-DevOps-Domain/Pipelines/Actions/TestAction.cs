@@ -4,15 +4,7 @@ public class TestAction : IAction
 {
     public bool Execute()
     {
-        try 
-        {
-            Console.WriteLine("Testing...");
+        Console.WriteLine("Testing...");
             return true;
-        } 
-        catch (Exception e) 
-        {
-            Console.WriteLine("Error: " + e.Message);
-            return false;
-        }
     }
 }
