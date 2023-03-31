@@ -9,10 +9,10 @@ public class Thread : ForumComponent
     public IThreadState OpenState { get; }
     public IThreadState ClosedState { get; }
     public IThreadState State { get; set; }
-    public Thread Parent { get; set; }
+    public ForumComponent Parent { get; set; }
     public List<ForumComponent> Children { get; set; }
     
-    public Thread (string title, string description, TeamMember author, Thread parent) : base(description, author)
+    public Thread (string title, string description, TeamMember author, ForumComponent parent) : base(description, author)
     {
         Title = title;
         OpenState = new OpenThreadState(this);
@@ -36,6 +36,7 @@ public class Thread : ForumComponent
     {
         Console.WriteLine("Adding component to thread...");
         Children.Add(component);
+        base.Publisher.ForumComponentStatus(component);
     }
 
     public void toNextState()

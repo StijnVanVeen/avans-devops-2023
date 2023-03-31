@@ -47,4 +47,9 @@ public class TodoState : IBacklogItemState
         Console.WriteLine("can't skip states");
         throw new IlligalStateTransitionException();
     }
+
+    public string toString()
+    {
+        return "ToDo State";
+    }
 }

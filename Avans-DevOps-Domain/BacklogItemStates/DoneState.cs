@@ -45,4 +45,9 @@ public class DoneState : IBacklogItemState
         Console.WriteLine("can't go to same state");
         throw new IlligalStateTransitionException();
     }
+
+    public string toString()
+    {
+        return "Done State";
+    }
 }

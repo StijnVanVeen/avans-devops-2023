@@ -5,6 +5,5 @@ namespace Avans_DevOps_Domain.Notifications;
 
 public interface ISubscriber
 {
-    void Update(IEventPublisher eventPublisher);
     public TeamMember TeamMember { get; set; }
 }

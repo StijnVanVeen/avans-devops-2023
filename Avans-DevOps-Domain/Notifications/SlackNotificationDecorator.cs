@@ -8,7 +8,7 @@ public class SlackNotificationDecorator : NotificationDecorator
     
     public override void Send(string message)
     {
-        Console.WriteLine("Sending this message via Slack: " );
+        Console.WriteLine("Sending this message via Slack: " + message);
         base.Send(message);
     }
 }

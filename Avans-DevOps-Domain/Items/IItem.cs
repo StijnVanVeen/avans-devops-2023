@@ -11,7 +11,7 @@ public interface IItem
     public IBacklogItemState TestedState { get; }
     public IBacklogItemState DoneState { get; }
     public IBacklogItemState State { get; set; }
-    public IEventPublisher Publisher { get; set; }
+    public BacklogItemEventPublisher Publisher { get; set; }
     public  string Title { get; set; }
     public  string Description { get; set; }
     public string Operation();

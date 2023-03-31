@@ -15,7 +15,7 @@ public abstract class BacklogItem : IItem
 
     private List<IItem> Items { get; set; }
     public IBacklogItemState State { get; set; }
-    public IEventPublisher Publisher { get; set; }
+    public BacklogItemEventPublisher Publisher { get; set; }
 
     public BacklogItem(string title, string description)
     {
@@ -36,30 +36,36 @@ public abstract class BacklogItem : IItem
     public void ChangeStateToToDo()
     {
         State.toToDoState();
+        Publisher.ItemStatus(this);
     }
     public void ChangeStateToDoing()
     {
         State.toDoingState();
+        Publisher.ItemStatus(this);
     }
 
     public void ChangeStateToReadyForTesting()
     {
         State.toReadyForTestingState();
+        Publisher.ItemStatus(this);
     }
 
     public void ChangeStateToTesting()
     {
         State.toTestingState();
+        Publisher.ItemStatus(this);
     }
 
     public void ChangeStateToTested()
     {
         State.toTestedState();
+        Publisher.ItemStatus(this);
     }
 
     public void ChangeStateToDone()
     {
         State.toDoneState();
+        Publisher.ItemStatus(this);
     }
 
     public void AddItem(IItem item)

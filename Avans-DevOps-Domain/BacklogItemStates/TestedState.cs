@@ -45,4 +45,9 @@ public class TestedState : IBacklogItemState
         Console.WriteLine("Transitioning from Tested state to Done state");
         item.State = item.DoneState;
     }
+
+    public string toString()
+    {
+        return "Tested State";
+    }
 }

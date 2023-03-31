@@ -44,4 +44,9 @@ public class ReadyForTestingstate: IBacklogItemState
         Console.WriteLine("can't skip states");
         throw new IlligalStateTransitionException();
     }
+
+    public string toString()
+    {
+        return "Ready For Testing State";
+    }
 }

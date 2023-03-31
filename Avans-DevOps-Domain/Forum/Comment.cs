@@ -23,5 +23,6 @@ public class Comment : ForumComponent
     {
         Console.WriteLine("Adding reply to comment...");
         Comments.Add(comment);
+        base.Publisher.ForumComponentStatus(comment);
     }
 }

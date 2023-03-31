@@ -25,7 +25,6 @@ public class DoingState : IBacklogItemState
     public void toReadyForTestingState()
     {
         Console.WriteLine("Transitioning from Doing state to Ready for testing state");
-        item.Publisher.NotifySubscribers();
         item.State = item.ReadyForTestingState;
     }
 
@@ -45,5 +44,10 @@ public class DoingState : IBacklogItemState
     {
         Console.WriteLine("can't skip states");
         throw new IlligalStateTransitionException();
+    }
+
+    public string toString()
+    {
+        return "Doing State";
     }
 }

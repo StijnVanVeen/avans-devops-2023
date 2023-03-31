@@ -1,27 +1,34 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Avans_DevOps_Domain.Forum;
 using Avans_DevOps_Domain.Items;
 using Avans_DevOps_Domain.Notifications;
 using Avans_DevOps_Domain.Project;
 using Avans_DevOps_Domain.Sprints;
 using Avans_DevOps_Domain.Team.Members;
+using Thread = Avans_DevOps_Domain.Forum.Thread;
 
 Console.WriteLine("Hello, World!");
 
 var tester = new Tester("Stijn", "email@test.test");
+var developer = new Developer("yannick", "email@test.test");
 
-var notifier = new Notifier();
-var decorator1 = new EmailNotificationDecorator(notifier);
+var notifier1 = new Notifier(tester);
+var notifier2 = new Notifier(developer);
+
+var decorator4 = new EmailNotificationDecorator(notifier2);
+//notifier2.TeamMember = developer;
+var decorator1 = new EmailNotificationDecorator(notifier1);
 var decorator2 = new SlackNotificationDecorator(decorator1);
 var decorator3 = new TeamsNotificationDecorator(decorator2);
-notifier.TeamMember = tester;
-var director = new NotificationDirector(decorator3);
+//notifier1.TeamMember = tester;
 
-
-
+var director = new BacklogItemNotificationDirector(decorator3, tester);
+var directror2 = new BacklogItemNotificationDirector(decorator4, developer);
 
 WorkItem item = new WorkItem("Workitem1", "desc", 1);
 item.Publisher.Subscribe(director);
+item.Publisher.Subscribe(directror2);
 item.ChangeStateToDoing();
 item.ChangeStateToReadyForTesting();
 
@@ -66,5 +73,21 @@ foreach (var itemdsf in project.CurrentSprint.Backlog.BacklogItems)
 {
     Console.WriteLine(itemdsf.Operation());
 }
+
+
+var forumDirector = new ForumNotificationDirector(tester, decorator3);
+var forumDirector1 = new ForumNotificationDirector(developer, decorator4);
+
+var forum = new Forum();
+var thread = new Thread("title", "desc", developer);
+var comment = new Comment("Hoi daar", tester, thread);
+var countercomment = new Comment("hey jij", developer);
+thread.Publisher.Subscribe(forumDirector1);
+comment.Publisher.Subscribe(forumDirector);
+countercomment.Publisher.Subscribe(forumDirector1);
+
+forum.AddThread(thread);
+thread.Add(comment);
+comment.Add(countercomment);
 
 
