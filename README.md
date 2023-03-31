@@ -20,6 +20,7 @@ The goal is to implement 15 of the 26 design patterns layed out by the Gang Of F
 * Strategy
 * Command
 * Visitor
+* Observer
 
 ---
 
