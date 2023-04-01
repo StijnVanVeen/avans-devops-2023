@@ -1,7 +1,5 @@
-﻿using Avans_DevOps_Domain.Forum;
-using Avans_DevOps_Domain.Pipelines;
-using Avans_DevOps_Domain.Publisher;
-using Avans_DevOps_Domain.Team.Members;
+﻿using Avans_DevOps_Domain.Pipelines;
+using Avans_DevOps_Domain.Teams.Members;
 
 namespace Avans_DevOps_Domain.Notifications;
 

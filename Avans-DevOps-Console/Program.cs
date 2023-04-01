@@ -1,5 +1,8 @@
-﻿using Avans_DevOps_Domain.Items;
+﻿using Avans_DevOps_Domain.Forums;
+using Avans_DevOps_Domain.Items;
 using Avans_DevOps_Domain.Notifications;
+using Avans_DevOps_Domain.Pipelines;
+using Avans_DevOps_Domain.Pipelines.Actions;
 using Avans_DevOps_Domain.Projects;
 using Avans_DevOps_Domain.Sprints;
 using Avans_DevOps_Domain.Teams;
@@ -8,29 +11,31 @@ using Avans_DevOps_Domain.Visitors;
 using Avans_DevOps_Domain.Reports;
 using Avans_DevOps_Domain.Reports.Builders;
 using Avans_DevOps_Domain.Reports.Exporters;
+using Thread = System.Threading.Thread;
 
-Console.WriteLine("Avans DevOps");
+Console.WriteLine("Hello, World!");
 
-// Setting up teams and team members
-var team = new Team("Testers");
-var name = "Stijn van Veen";
-var email = "s.vanveen@avans.nl";
-team.AddTester(name, email);
-var tester = team.GetMember(name);
+var tester = new Tester("Stijn", "email@test.test");
+var developer = new Developer("yannick", "email@test.test");
 
-// Setting up notifications
-var notifier = new Notifier();
-var decorator1 = new EmailNotificationDecorator(notifier);
+var notifier1 = new Notifier(tester);
+var notifier2 = new Notifier(developer);
+
+var decorator4 = new EmailNotificationDecorator(notifier2);
+var decorator1 = new EmailNotificationDecorator(notifier1);
 var decorator2 = new SlackNotificationDecorator(decorator1);
 var decorator3 = new TeamsNotificationDecorator(decorator2);
-notifier.TeamMember = tester;
-var director = new NotificationDirector(decorator3);
 
-// Setting up work items and tasks
+
+var director = new BacklogItemNotificationDirector(decorator3, tester);
+var directror2 = new BacklogItemNotificationDirector(decorator4, developer);
+
 WorkItem item = new WorkItem("Workitem1", "desc", 1);
 item.Publisher.Subscribe(director);
+item.Publisher.Subscribe(directror2);
 item.ChangeStateToDoing();
 item.ChangeStateToReadyForTesting();
+
 
 var item2 = new WorkItem("Workitem2", "desc", 1);
 var item3 = new WorkItem("Workitem3", "desc", 1);
@@ -52,7 +57,7 @@ item.AddItem(task1);
 item.AddItem(task2);
 item.AddItem(task3);
 
-// Setting up sprints
+
 var Sprint1 = new ReleaseSprint("Sprint 1", new DateOnly(2023, 1,1), new DateOnly(2023, 1, 14));
 Sprint1.Backlog.AddWorkItem(item);
 var Sprint2 = new ReleaseSprint("Sprint 2", new DateOnly(2023, 1,15), new DateOnly(2023, 1, 28));
@@ -60,38 +65,58 @@ var Sprint2 = new ReleaseSprint("Sprint 2", new DateOnly(2023, 1,15), new DateOn
 Sprint1.toNextState();
 Console.WriteLine(Sprint1.State.Name);
 
-// Setting up project
-Project project = new Project("test", null);
+var team = new Team("team");
+
+Project project = new Project("test", team);
 project.SprintDirector.CreateReleaseSprint("Sprint 1", new DateOnly(2023, 1,1), new DateOnly(2023, 1, 14));
 project.CurrentSprint.Backlog.AddWorkItem(item);
 project.SprintDirector.CreateReleaseSprint("Sprint 2", new DateOnly(2023, 1,1), new DateOnly(2023, 1, 14));
-//project.SprintDirector.NextSprint();
 Console.WriteLine();
+
 
 foreach (var itemdsf in project.CurrentSprint.Backlog.BacklogItems)
 {
     Console.WriteLine(itemdsf.Operation());
 }
 
-// Generating reports
-var reportVisitor = new ReportVisitor();
 
-project.Accept(reportVisitor);
-Sprint1.Accept(reportVisitor);
-Sprint2.Accept(reportVisitor);
-Sprint1.Backlog.Accept(reportVisitor);
-Sprint2.Backlog.Accept(reportVisitor);
-team.Accept(reportVisitor);
+var forumDirector = new ForumNotificationDirector(tester, decorator3);
+var forumDirector1 = new ForumNotificationDirector(developer, decorator4);
 
-var reportBuilder = new TeamReportBuilder(reportVisitor);
-var reportDirector = new ReportBuilderDirector(reportBuilder);
+var forum = new Forum();
+var thread = new Avans_DevOps_Domain.Forums.Thread("title", "desc", developer);
+var comment = new Comment("Hoi daar", tester, thread);
+var countercomment = new Comment("hey jij", developer);
+thread.Publisher.Subscribe(forumDirector1);
+comment.Publisher.Subscribe(forumDirector);
+countercomment.Publisher.Subscribe(forumDirector1);
 
-reportDirector.MakeReport();
+forum.AddThread(thread);
+thread.Add(comment);
+comment.Add(countercomment);
 
-var report = reportBuilder.GetReport();
+var sourceAction = new SourceAction();
+var packageAction = new PackageAction();
+var buildAction = new BuildAction();
+var testAction = new TestAction();
+var analyseAction = new AnalyseAction();
+var utilityAction = new UtilityAction();
+var deployAction = new DeployAction();
+        
+var pipeline = new Pipeline();
 
-// Exporting reports
-var exporter = new WordExporter();
-exporter.Export(report);
+var pipelineDirector = new PipelineNotificationDirector(tester, decorator3);
+pipeline.Publisher.Subscribe(pipelineDirector);
+pipeline.Execute();
+
+pipeline.AddAction(sourceAction);
+pipeline.AddAction(packageAction);
+pipeline.AddAction(buildAction);
+pipeline.AddAction(testAction);
+pipeline.AddAction(analyseAction);
+pipeline.AddAction(utilityAction);
+pipeline.AddAction(deployAction);
+
+pipeline.Execute();
 
 

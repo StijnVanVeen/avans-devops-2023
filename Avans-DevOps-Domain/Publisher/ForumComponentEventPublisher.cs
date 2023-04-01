@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using Avans_DevOps_Domain.Forum;
-using Avans_DevOps_Domain.Notifications;
-using Thread = Avans_DevOps_Domain.Forum.Thread;
+﻿using Avans_DevOps_Domain.Forums;
 
 namespace Avans_DevOps_Domain.Publisher;
 

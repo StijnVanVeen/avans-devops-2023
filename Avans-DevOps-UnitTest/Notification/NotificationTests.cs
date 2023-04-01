@@ -1,13 +1,11 @@
 ﻿using Avans_DevOps_Domain;
-using Avans_DevOps_Domain.Forum;
+using Avans_DevOps_Domain.Forums;
 using Avans_DevOps_Domain.Items;
 using Avans_DevOps_Domain.Notifications;
 using Avans_DevOps_Domain.Pipelines.Actions;
-using Avans_DevOps_Domain.Publisher;
-using Avans_DevOps_Domain.Sprints;
-using Avans_DevOps_Domain.Team.Members;
-using Moq;
-using Thread = System.Threading.Thread;
+using Avans_DevOps_Domain.Teams.Members;
+using Thread = Avans_DevOps_Domain.Forums.Thread;
+
 
 namespace Avans_DevOps_UnitTest.Notification;
 
@@ -81,7 +79,7 @@ public class NotificationTests
         var decorator1 = new SlackNotificationDecorator(notifier1);
         var forumDirector = new ForumNotificationDirector(tester, decorator1);
         var forum = new Forum();
-        var thread = new Avans_DevOps_Domain.Forum.Thread("title", "desc", tester);
+        var thread = new Thread("title", "desc", tester);
         var comment = new Comment("Hoi daar", tester, thread);
         thread.Publisher.Subscribe(forumDirector);
         forum.AddThread(thread);
