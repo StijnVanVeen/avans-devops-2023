@@ -1,5 +1,6 @@
 ﻿using Avans_DevOps_Domain.Backlog;
 using Avans_DevOps_Domain.SprintStates;
+using Avans_DevOps_Domain.Visitors;
 
 namespace Avans_DevOps_Domain.Sprints;
 
@@ -72,5 +73,9 @@ public class ReleaseSprint : ISprint
     {
         State.toNextState();
     }
-    
+
+    public void Accept(IVisitor visitor)
+    {
+        visitor.VisitSprint(this);
+    }
 }

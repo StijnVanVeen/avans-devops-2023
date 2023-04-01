@@ -1,6 +1,6 @@
-using Avans_DevOps_Domain.Team;
-using Avans_DevOps_Domain.Team.Members;
-using Avans_DevOps_Domain.Team.TeamMemberFactories;
+using Avans_DevOps_Domain.Teams;
+using Avans_DevOps_Domain.Teams.Members;
+
 using Moq;
 
 namespace Avans_DevOps_UnitTest;

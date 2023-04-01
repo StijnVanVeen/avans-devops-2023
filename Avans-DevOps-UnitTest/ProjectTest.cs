@@ -1,5 +1,5 @@
 ﻿using Avans_DevOps_Domain.Exceptions;
-using Avans_DevOps_Domain.Project;
+using Avans_DevOps_Domain.Projects;
 using Avans_DevOps_Domain.Sprints;
 
 namespace Avans_DevOps_UnitTest;

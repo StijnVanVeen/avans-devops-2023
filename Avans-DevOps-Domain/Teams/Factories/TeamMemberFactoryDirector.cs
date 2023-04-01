@@ -1,7 +1,8 @@
-using Avans_DevOps_Domain.Team.Members;
-using Avans_DevOps_Domain.Team.TeamMemberFactories;
+using Avans_DevOps_Domain.Notifications;
+using Avans_DevOps_Domain.Teams.Members;
+using Avans_DevOps_Domain.Teams.Factories;
 
-namespace Avans_DevOps_Domain.Team;
+namespace Avans_DevOps_Domain.Teams;
 
 public class TeamMemberFactoryDirector
 {
@@ -17,15 +18,15 @@ public class TeamMemberFactoryDirector
         return Factory.CreateTeamMember(name, email);
     }
     
-    public TeamMember CreateScrumMaster(string name, string email)
-    {
-        Factory = new ScrumMasterFactory();
-        return Factory.CreateTeamMember(name, email);
-    }
-    
     public TeamMember CreateProductOwner(string name, string email)
     {
         Factory = new ProductOwnerFactory();
+        return Factory.CreateTeamMember(name, email);
+    }
+    
+    public TeamMember CreateScrumMaster(string name, string email)
+    {
+        Factory = new ScrumMasterFactory();
         return Factory.CreateTeamMember(name, email);
     }
     

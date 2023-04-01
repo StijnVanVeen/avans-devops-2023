@@ -1,4 +1,5 @@
 ﻿using Avans_DevOps_Domain.Items;
+using Avans_DevOps_Domain.Visitors;
 
 namespace Avans_DevOps_Domain.Backlog;
 
@@ -19,5 +20,10 @@ public class SprintBacklog : IBacklog
     public void DeleteWorkItem(IItem item)
     {
         BacklogItems.Remove(item);
+    }
+
+    public void Accept(IVisitor visitor)
+    {
+        visitor.VisitBacklog(this);
     }
 }

@@ -1,13 +1,14 @@
 ﻿using Avans_DevOps_Domain.Exceptions;
+using Avans_DevOps_Domain.Projects;
 
 namespace Avans_DevOps_Domain.Sprints;
 
 public class SprintDirector
 {
-    public Project.Project Project { get; set; }
+    public Project Project { get; set; }
     public SprintFactory Factory { get; set; }
 
-    public SprintDirector(Project.Project project)
+    public SprintDirector(Project project)
     {
         Project = project;
         Factory = new ReleaseSprintFactory();

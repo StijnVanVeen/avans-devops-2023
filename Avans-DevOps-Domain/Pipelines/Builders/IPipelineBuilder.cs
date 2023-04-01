@@ -1,6 +1,6 @@
 namespace Avans_DevOps_Domain.Pipelines.PipelineBuilder;
 
-public interface IBuilder
+public interface IPipelineBuilder
 {
     public void Reset();
     public void AddSourceAction();

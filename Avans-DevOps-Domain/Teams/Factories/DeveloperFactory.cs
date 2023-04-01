@@ -1,6 +1,6 @@
-using Avans_DevOps_Domain.Team.Members;
+using Avans_DevOps_Domain.Teams.Members;
 
-namespace Avans_DevOps_Domain.Team.TeamMemberFactories;
+namespace Avans_DevOps_Domain.Teams.Factories;
 
 public class DeveloperFactory : ITeamMemberFactory
 {

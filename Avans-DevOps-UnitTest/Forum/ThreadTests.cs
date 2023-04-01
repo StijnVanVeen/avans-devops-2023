@@ -1,5 +1,5 @@
-using Avans_DevOps_Domain.Forum;
-using Avans_DevOps_Domain.Team.Members;
+using Avans_DevOps_Domain.Teams.Members;
+using Thread = Avans_DevOps_Domain.Forums.Thread;
 
 namespace Avans_DevOps_UnitTest;
 
@@ -13,11 +13,11 @@ public class ThreadTests
         //arrange
         const string title = "Test Thread";
         const string description = "My test";
-        var thread = new Avans_DevOps_Domain.Forum.Thread(title, description, john);
+        var thread = new Thread(title, description, john);
         
         const string subTitle = "Testing Sub";
         const string subDescription = "This is a sub thread";
-        var sub = new Avans_DevOps_Domain.Forum.Thread(subTitle, subDescription, john, thread);
+        var sub = new Thread(subTitle, subDescription, john, thread);
         
         //act
         thread.Add(sub);

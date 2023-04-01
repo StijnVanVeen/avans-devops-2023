@@ -2,16 +2,28 @@ using Avans_DevOps_Domain.Reports;
 using Avans_DevOps_Domain.Reports.Builders;
 using Avans_DevOps_Domain.Reports.Exporters;
 using Avans_DevOps_Domain.Reports.Exporters.Result;
+using Avans_DevOps_Domain.Teams;
+using Avans_DevOps_Domain.Visitors;
 
 namespace Avans_DevOps_UnitTest.Report;
 
 public class ExporterTests
 {
+    private Team _team;
+    
+    public ExporterTests()
+    {
+        _team = new Team("TestTeam");
+        _team.AddTester("John Doe", "j.doe@avans.nl");
+    }
+    
     [Fact]
     public void Export_WithPDFExporter_CreatesPDF()
     {
         // Arrange
-        var builder = new BurnDownReportBuilder();
+        var visitor = new ReportVisitor();
+        _team.Accept(visitor);
+        var builder = new TeamReportBuilder(visitor);
         var director = new ReportBuilderDirector(builder);
         var exporter = new PDFExporter();
         
@@ -34,7 +46,9 @@ public class ExporterTests
     public void Export_WithPNGExporter_CreatesPNG()
     {
         // Arrange
-        var builder = new BurnDownReportBuilder();
+        var visitor = new ReportVisitor();
+        _team.Accept(visitor);
+        var builder = new TeamReportBuilder(visitor);
         var director = new ReportBuilderDirector(builder);
         var exporter = new PNGExporter();
         
@@ -57,7 +71,9 @@ public class ExporterTests
     public void Export_WithWordExporter_CreatesWord()
     {
         // Arrange
-        var builder = new BurnDownReportBuilder();
+        var visitor = new ReportVisitor();
+        _team.Accept(visitor);
+        var builder = new TeamReportBuilder(visitor);
         var director = new ReportBuilderDirector(builder);
         var exporter = new WordExporter();
         

@@ -1,6 +1,7 @@
-using Avans_DevOps_Domain.Team.Members;
 
-namespace Avans_DevOps_Domain.Team.TeamMemberFactories;
+using Avans_DevOps_Domain.Teams.Members;
+
+namespace Avans_DevOps_Domain.Teams.Factories;
 
 public class ProductOwnerFactory : ITeamMemberFactory
 {

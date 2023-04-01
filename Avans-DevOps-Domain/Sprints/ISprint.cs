@@ -1,9 +1,10 @@
 ﻿using Avans_DevOps_Domain.Backlog;
 using Avans_DevOps_Domain.SprintStates;
+using Avans_DevOps_Domain.Visitors;
 
 namespace Avans_DevOps_Domain.Sprints;
 
-public interface ISprint
+public interface ISprint : IVisitable
 {
     public ISprintState InitialState { get; }
     public ISprintState InProgresState { get; }

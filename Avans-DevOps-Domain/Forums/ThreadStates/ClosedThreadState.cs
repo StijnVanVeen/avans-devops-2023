@@ -1,4 +1,4 @@
-namespace Avans_DevOps_Domain.Forum.ThreadStates;
+namespace Avans_DevOps_Domain.Forums.ThreadStates;
 
 public class ClosedThreadState : IThreadState
 {

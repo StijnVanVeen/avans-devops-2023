@@ -1,4 +1,4 @@
-namespace Avans_DevOps_Domain.Team.Members;
+namespace Avans_DevOps_Domain.Teams.Members;
 
 public class Developer : TeamMember
 {

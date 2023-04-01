@@ -2,7 +2,7 @@ using Avans_DevOps_Domain.Pipelines.Actions;
 
 namespace Avans_DevOps_Domain.Pipelines.PipelineBuilder;
 
-public class PipelineBuilder : IBuilder
+public class PipelineBuilder : IPipelineBuilder
 {
     public IPipeline Pipeline { get; set; }
     

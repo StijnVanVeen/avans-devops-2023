@@ -1,13 +1,16 @@
 using Avans_DevOps_Domain.Reports.Components;
+using Avans_DevOps_Domain.Visitors;
 
 namespace Avans_DevOps_Domain.Reports.Builders;
 
 public class TeamReportBuilder : IReportBuilder
 {
     public IReport Report { get; set; }
-
-    public TeamReportBuilder()
+    public ReportVisitor Visitor { get; set; }
+    
+    public TeamReportBuilder(ReportVisitor visitor)
     {
+        Visitor = visitor;
         Reset();
     }
 
@@ -18,12 +21,27 @@ public class TeamReportBuilder : IReportBuilder
 
     public void SetHeader()
     {
-        Report.Header = new TeamHeader("Team 1");
+        if (Visitor != null)
+        {
+            var name = Visitor.Team.Name;
+            Report.Header = new TeamHeader(name);
+        }
     }
 
     public void SetBody()
     {
-        Report.Body = "This is a team report";
+        if (Visitor != null)
+        {
+            var team = Visitor.Team;
+            var members = "";
+            
+            foreach (var member in team.Members)
+            {
+                members += $"{member.Name}\n";
+            }
+            
+            Report.Body = $"Team: {team.Name}, currently has {team.Members.Count} members:\n" + members;
+        }
     }
 
     public void SetFooter()
