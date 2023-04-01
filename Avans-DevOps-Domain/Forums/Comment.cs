@@ -22,6 +22,7 @@ public class Comment : ForumComponent
     public void Add(Comment comment)
     {
         Console.WriteLine("Adding reply to comment...");
+        comment.Parent = this;
         Comments.Add(comment);
     }
 }

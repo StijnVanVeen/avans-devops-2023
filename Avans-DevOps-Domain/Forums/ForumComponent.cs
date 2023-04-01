@@ -6,10 +6,19 @@ public abstract class ForumComponent
 {
     public string Description { get; set; }
     public TeamMember Author { get; set; }
-
-    public ForumComponent(string description, TeamMember author, ForumComponent parent = null)
+    public ForumComponent Parent { get; set; }
+    
+    public ForumComponent(string description, TeamMember author)
     {
         Description = description;
         Author = author;
+        Parent = null;
+    }
+
+    public ForumComponent(string description, TeamMember author, ForumComponent parent)
+    {
+        Description = description;
+        Author = author;
+        Parent = parent;
     }
 }

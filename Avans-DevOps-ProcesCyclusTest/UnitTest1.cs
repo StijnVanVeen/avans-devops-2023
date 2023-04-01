@@ -1,10 +1,11 @@
-namespace Avans_DevOps_ProcesCyclusTest;
-
-public class UnitTest1
+namespace Avans_DevOps_ProcesCyclusTest
 {
-    [Fact]
-    public void Test1()
+    public class UnitTest1
     {
-        
+        [Fact]
+        public void Test1()
+        {
+            
+        }
     }
 }

@@ -35,6 +35,7 @@ public class Thread : ForumComponent
     public void Add(ForumComponent component)
     {
         Console.WriteLine("Adding component to thread...");
+        component.Parent = this;
         Children.Add(component);
     }
 
