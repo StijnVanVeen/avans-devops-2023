@@ -4,7 +4,7 @@ namespace Avans_DevOps_Domain.SprintStates;
 
 public class ReviewState : ISprintState
 {
-    private ISprint _sprint;
+    private readonly ISprint _sprint;
     public string Name { get; }
 
     public ReviewState(ISprint sprint)

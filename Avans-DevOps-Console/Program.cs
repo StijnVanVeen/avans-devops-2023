@@ -3,8 +3,11 @@
 using Avans_DevOps_Domain.Forum;
 using Avans_DevOps_Domain.Items;
 using Avans_DevOps_Domain.Notifications;
+using Avans_DevOps_Domain.Pipelines;
+using Avans_DevOps_Domain.Pipelines.Actions;
 using Avans_DevOps_Domain.Project;
 using Avans_DevOps_Domain.Sprints;
+using Avans_DevOps_Domain.Team;
 using Avans_DevOps_Domain.Team.Members;
 using Thread = Avans_DevOps_Domain.Forum.Thread;
 
@@ -17,11 +20,10 @@ var notifier1 = new Notifier(tester);
 var notifier2 = new Notifier(developer);
 
 var decorator4 = new EmailNotificationDecorator(notifier2);
-//notifier2.TeamMember = developer;
 var decorator1 = new EmailNotificationDecorator(notifier1);
 var decorator2 = new SlackNotificationDecorator(decorator1);
 var decorator3 = new TeamsNotificationDecorator(decorator2);
-//notifier1.TeamMember = tester;
+
 
 var director = new BacklogItemNotificationDirector(decorator3, tester);
 var directror2 = new BacklogItemNotificationDirector(decorator4, developer);
@@ -61,11 +63,12 @@ var Sprint2 = new ReleaseSprint("Sprint 2", new DateOnly(2023, 1,15), new DateOn
 Sprint1.toNextState();
 Console.WriteLine(Sprint1.State.Name);
 
-Project project = new Project("test", null);
+var team = new Team("team");
+
+Project project = new Project("test", team);
 project.SprintDirector.CreateReleaseSprint("Sprint 1", new DateOnly(2023, 1,1), new DateOnly(2023, 1, 14));
 project.CurrentSprint.Backlog.AddWorkItem(item);
 project.SprintDirector.CreateReleaseSprint("Sprint 2", new DateOnly(2023, 1,1), new DateOnly(2023, 1, 14));
-//project.SprintDirector.NextSprint();
 Console.WriteLine();
 
 
@@ -90,4 +93,27 @@ forum.AddThread(thread);
 thread.Add(comment);
 comment.Add(countercomment);
 
+var sourceAction = new SourceAction();
+var packageAction = new PackageAction();
+var buildAction = new BuildAction();
+var testAction = new TestAction();
+var analyseAction = new AnalyseAction();
+var utilityAction = new UtilityAction();
+var deployAction = new DeployAction();
+        
+var pipeline = new Pipeline();
+
+var pipelineDirector = new PipelineNotificationDirector(tester, decorator3);
+pipeline.Publisher.Subscribe(pipelineDirector);
+pipeline.Execute();
+
+pipeline.AddAction(sourceAction);
+pipeline.AddAction(packageAction);
+pipeline.AddAction(buildAction);
+pipeline.AddAction(testAction);
+pipeline.AddAction(analyseAction);
+pipeline.AddAction(utilityAction);
+pipeline.AddAction(deployAction);
+
+pipeline.Execute();
 

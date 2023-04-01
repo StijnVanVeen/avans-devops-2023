@@ -4,7 +4,7 @@ using Avans_DevOps_Domain.Team.Members;
 
 namespace Avans_DevOps_Domain.Notifications;
 
-public class ForumNotificationDirector : IObserver<ForumComponent>
+public class ForumNotificationDirector : IObserver<ForumComponent>, ISubscriber
 {
     public TeamMember TeamMember { get; set; }
     public IDecoratorComponent Component { get; set; }
@@ -17,16 +17,6 @@ public class ForumNotificationDirector : IObserver<ForumComponent>
     {
         Component = component;
         TeamMember = teamMember;
-    }
-    
-    public virtual void Subscribe(ForumComponentEventPublisher provider)
-    {
-        cancellation = provider.Subscribe(this);
-    }
-
-    public virtual void Unsubscribe()
-    {
-        cancellation.Dispose();
     }
 
     public void OnCompleted()
@@ -41,6 +31,7 @@ public class ForumNotificationDirector : IObserver<ForumComponent>
 
     public void OnNext(ForumComponent value)
     {
+        ForumComponent = value;
         Component.Send(value.Author.Name + " said: " + value.Description);
     }
 }

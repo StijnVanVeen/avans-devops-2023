@@ -17,7 +17,7 @@ public abstract class BacklogItem : IItem
     public IBacklogItemState State { get; set; }
     public BacklogItemEventPublisher Publisher { get; set; }
 
-    public BacklogItem(string title, string description)
+    protected BacklogItem(string title, string description)
     {
         TodoState = new TodoState(this);
         DoingState = new DoingState(this);

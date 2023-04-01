@@ -4,7 +4,7 @@ namespace Avans_DevOps_Domain.SprintStates;
 
 public class FinishedState : ISprintState
 {
-    private ISprint _sprint;
+    private readonly ISprint _sprint;
     public string Name { get; }
 
     public FinishedState(ISprint sprint)

@@ -18,13 +18,13 @@ public class TestingState : IBacklogItemState
 
     public void toDoingState()
     {
-        Console.WriteLine("can't go back in states");
+        Console.WriteLine("can't go back in states to doing state");
         throw new IlligalStateTransitionException();
     }
 
     public void toReadyForTestingState()
     {
-        Console.WriteLine("can't go back in states");
+        Console.WriteLine("can't go back in states to ready for testing state");
         throw new IlligalStateTransitionException();
     }
 
@@ -42,7 +42,7 @@ public class TestingState : IBacklogItemState
 
     public void toDoneState()
     {
-        Console.WriteLine("can't skip states");
+        Console.WriteLine("can't skip states to done state");
         throw new IlligalStateTransitionException();
     }
 

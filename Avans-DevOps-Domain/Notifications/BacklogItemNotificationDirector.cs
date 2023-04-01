@@ -19,16 +19,6 @@ public class BacklogItemNotificationDirector : IObserver<IItem>, ISubscriber
         TeamMember = teamMember;
     }
     
-    public virtual void Subscribe(BacklogItemEventPublisher provider)
-    {
-        cancellation = provider.Subscribe(this);
-    }
-
-    public virtual void Unsubscribe()
-    {
-        cancellation.Dispose();
-    }
-
     public void OnCompleted()
     {
         throw new NotImplementedException();
@@ -41,6 +31,7 @@ public class BacklogItemNotificationDirector : IObserver<IItem>, ISubscriber
 
     public void OnNext(IItem value)
     {
+        item = value;
         Component.Send("to " + TeamMember.Name + ": " +value.Title + " has moved to " + value.State.toString());
     }
 }

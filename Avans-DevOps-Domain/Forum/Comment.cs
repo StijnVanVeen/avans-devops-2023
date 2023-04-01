@@ -4,7 +4,7 @@ namespace Avans_DevOps_Domain.Forum;
 
 public class Comment : ForumComponent
 {
-    public ForumComponent Parent { get; set; }
+    public ForumComponent? Parent { get; set; }
     public List<Comment> Comments { get; set; }
     
     public Comment(string description, TeamMember author) : base(description, author)
