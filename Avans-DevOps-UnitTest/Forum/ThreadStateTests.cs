@@ -1,4 +1,5 @@
-using Avans_DevOps_Domain.Team.Members;
+using Avans_DevOps_Domain.Teams.Members;
+using Thread = Avans_DevOps_Domain.Forums.Thread;
 
 namespace Avans_DevOps_UnitTest;
 
@@ -11,7 +12,7 @@ public class ThreadStateTests
         //arrange
         const string title = "Test Thread";
         const string description = "My test";
-        var thread = new Avans_DevOps_Domain.Forum.Thread(title, description, john);
+        var thread = new Thread(title, description, john);
 
         //act
 
@@ -30,7 +31,7 @@ public class ThreadStateTests
         //arrange
         const string title = "Test Thread";
         const string description = "My test";
-        var thread = new Avans_DevOps_Domain.Forum.Thread(title, description, john);
+        var thread = new Thread(title, description, john);
 
         //act
         var previousState = thread.State.Name;
@@ -52,7 +53,7 @@ public class ThreadStateTests
         //arrange
         const string title = "Test Thread";
         const string description = "My test";
-        var thread = new Avans_DevOps_Domain.Forum.Thread(title, description, john);
+        var thread = new Thread(title, description, john);
         
         //act
         var firstState = thread.State.Name;

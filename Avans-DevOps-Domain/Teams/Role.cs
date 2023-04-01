@@ -1,4 +1,4 @@
-namespace Avans_DevOps_Domain.Team;
+namespace Avans_DevOps_Domain.Teams;
 
 public enum Role
 {

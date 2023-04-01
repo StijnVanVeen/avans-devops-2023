@@ -1,4 +1,5 @@
 using Avans_DevOps_Domain.Reports.Components;
+using Avans_DevOps_Domain.Visitors;
 
 namespace Avans_DevOps_Domain.Reports;
 

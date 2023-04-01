@@ -1,18 +1,19 @@
 ﻿using Avans_DevOps_Domain.Sprints;
-using Avans_DevOps_Domain.Team;
+using Avans_DevOps_Domain.Teams;
+using Avans_DevOps_Domain.Visitors;
 
-namespace Avans_DevOps_Domain.Project;
+namespace Avans_DevOps_Domain.Projects;
 
-public class Project
+public class Project : IVisitable
 {
     public string Name { get; set; }
-    public Team.Team Team { get; set; }
+    public Team Team { get; set; }
     public LinkedList<ISprint> PastSprints { get;}
     public LinkedList<ISprint> UpcommingSprints { get;}
     public ISprint? CurrentSprint { get; set; }
     public SprintDirector SprintDirector { get;}
 
-    public Project(string name, Team.Team team )
+    public Project(string name, Team team )
     {
         Name = name;
         Team = team;
@@ -20,5 +21,10 @@ public class Project
         UpcommingSprints = new LinkedList<ISprint>();
         CurrentSprint = null;
         SprintDirector = new SprintDirector(this);
+    }
+
+    public void Accept(IVisitor visitor)
+    {
+        visitor.VisitProject(this);
     }
 }

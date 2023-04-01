@@ -2,14 +2,14 @@ namespace Avans_DevOps_Domain.Pipelines.PipelineBuilder;
 
 public class PipelineBuilderDirector
 {
-    public IBuilder Builder { get; set; }
+    public IPipelineBuilder Builder { get; set; }
     
-    public PipelineBuilderDirector(IBuilder builder)
+    public PipelineBuilderDirector(IPipelineBuilder builder)
     {
         Builder = builder;
     }
     
-    public void SetBuilder(IBuilder builder)
+    public void SetBuilder(IPipelineBuilder builder)
     {
         Builder = builder;
     }

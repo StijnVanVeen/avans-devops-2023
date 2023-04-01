@@ -1,21 +1,21 @@
-using Avans_DevOps_Domain.Team.Members;
-using Avans_DevOps_Domain.Team.TeamMemberFactories;
+using Avans_DevOps_Domain.Teams.Members;
+using Avans_DevOps_Domain.Visitors;
 
-namespace Avans_DevOps_Domain.Team;
+namespace Avans_DevOps_Domain.Teams;
 
-public class Team
+public class Team : IVisitable
 {
     public List<TeamMember> Members { get; set; }
     public string Name { get; set; }
     public TeamMemberFactoryDirector Director { get; set; }
-    
+
     public Team(string name)
     {
         Name = name;
         Director = new TeamMemberFactoryDirector();
         Members = new List<TeamMember>();
     }
-    
+
     public void AddDeveloper(string name, string email)
     {
         Members.Add(Director.CreateDeveloper(name, email));
@@ -44,5 +44,10 @@ public class Team
     public void DeleteMember(TeamMember member)
     {
         Members.Remove(member);
+    }
+
+    public void Accept(IVisitor visitor)
+    {
+        visitor.VisitTeam(this);
     }
 }

@@ -1,5 +1,6 @@
-using Avans_DevOps_Domain.Forum;
-using Avans_DevOps_Domain.Team.Members;
+using Avans_DevOps_Domain.Forums;
+using Avans_DevOps_Domain.Teams.Members;
+using Thread = Avans_DevOps_Domain.Forums.Thread;
 
 namespace Avans_DevOps_UnitTest;
 
@@ -9,7 +10,7 @@ public class CommentTests
 
     private const string title = "Test Thread";
     private const string description = "My test";
-    private static readonly Avans_DevOps_Domain.Forum.Thread thread = new Avans_DevOps_Domain.Forum.Thread(title, description, john);
+    private static readonly Thread thread = new Thread(title, description, john);
     
     [Fact]
     public void AddCommentToThreadTest()

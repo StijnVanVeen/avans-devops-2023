@@ -1,6 +1,4 @@
-using Avans_DevOps_Domain.Team.Members;
-
-namespace Avans_DevOps_Domain.Forum;
+namespace Avans_DevOps_Domain.Forums;
 
 public class Forum
 {

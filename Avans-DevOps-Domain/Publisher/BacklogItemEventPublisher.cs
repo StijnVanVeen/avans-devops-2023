@@ -1,6 +1,6 @@
 ﻿using Avans_DevOps_Domain.Items;
 using Avans_DevOps_Domain.Notifications;
-using Avans_DevOps_Domain.Team;
+using Avans_DevOps_Domain.Teams;
 
 namespace Avans_DevOps_Domain.Publisher;
 
