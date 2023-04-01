@@ -9,7 +9,7 @@ public class EmailNotificationDecorator : NotificationDecorator
     }
     public override void Send(string message)
     {
-        Console.WriteLine("Sending this message via E-mail: " );
+        Console.WriteLine("Sending this message via E-mail: " + message);
         base.Send(message);
     }
 }

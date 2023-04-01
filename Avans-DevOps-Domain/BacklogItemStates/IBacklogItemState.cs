@@ -8,4 +8,5 @@ public interface IBacklogItemState
     public void toTestingState();
     public void toTestedState();
     public void toDoneState();
+    public string toString();
 }

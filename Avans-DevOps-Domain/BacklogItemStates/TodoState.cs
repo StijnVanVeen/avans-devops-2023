@@ -26,25 +26,30 @@ public class TodoState : IBacklogItemState
 
     public void toReadyForTestingState()
     {
-        Console.WriteLine("can't skip states");
+        Console.WriteLine("can't skip states to ready for testing state");
         throw new IlligalStateTransitionException();
     }
 
     public void toTestingState()
     {
-        Console.WriteLine("can't skip states");
+        Console.WriteLine("can't skip states to testing state");
         throw new IlligalStateTransitionException();
     }
 
     public void toTestedState()
     {
-        Console.WriteLine("can't skip states");
+        Console.WriteLine("can't skip states to tested state");
         throw new IlligalStateTransitionException();
     }
 
     public void toDoneState()
     {
-        Console.WriteLine("can't skip states");
+        Console.WriteLine("can't skip states to done state");
         throw new IlligalStateTransitionException();
+    }
+
+    public string toString()
+    {
+        return "ToDo State";
     }
 }

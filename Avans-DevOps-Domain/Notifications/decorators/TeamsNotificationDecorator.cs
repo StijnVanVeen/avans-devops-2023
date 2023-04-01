@@ -8,7 +8,7 @@ public class TeamsNotificationDecorator : NotificationDecorator
     
     public override void Send(string message)
     {
-        Console.WriteLine("Sending this message via Teams: " );
+        Console.WriteLine("Sending this message via Teams: " + message);
         base.Send(message);
     }
 }

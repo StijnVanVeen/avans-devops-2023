@@ -10,7 +10,7 @@ public abstract class ItemTask : IItem
     public IBacklogItemState TestingState { get; }
     public IBacklogItemState TestedState { get; }
     public IBacklogItemState DoneState { get; }
-    public IEventPublisher Publisher { get; set; }
+    public BacklogItemEventPublisher Publisher { get; set; }
     public  string Title { get; set; }
     public  string Description { get; set; }
 

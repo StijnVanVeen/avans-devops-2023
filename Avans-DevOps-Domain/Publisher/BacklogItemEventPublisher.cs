@@ -4,44 +4,49 @@ using Avans_DevOps_Domain.Teams;
 
 namespace Avans_DevOps_Domain.Publisher;
 
-public class BacklogItemEventPublisher : IEventPublisher
+public class BacklogItemEventPublisher : IObservable<IItem>
 {
-    public List<ISubscriber> Subscribers { get; set; }
-    public IItem item { get; set; }
+    private List<IObserver<IItem>> _observers;
+    private IItem item { get; set; }
 
     public BacklogItemEventPublisher(IItem item)
     {
-        Subscribers = new List<ISubscriber>();
+        this._observers = new List<IObserver<IItem>>();
         this.item = item;
     }
 
-    public void Subscribe(ISubscriber subscriber)
+    public IDisposable Subscribe(IObserver<IItem> observer)
     {
-        Console.WriteLine("BacklogItemEventPublisher: Added a Subscriber");
-        Subscribers.Add(subscriber);
+        if (! _observers.Contains(observer)) {
+            _observers.Add(observer);
+            // Provide observer with existing data.
+            observer.OnNext(item);
+        }
+        return new Unsubscriber<IItem>(_observers, observer);
     }
 
-    public void Unsubscribe(ISubscriber subscriber)
+    public void ItemStatus(IItem item)
     {
-        Console.WriteLine("BacklogItemEventPublisher: Removed a Subscriber");
-        Subscribers.Remove(subscriber);
+        foreach (var observer in _observers)
+        {
+            observer.OnNext(item);
+        }
+    }
+}
+internal class Unsubscriber<IItem> : IDisposable
+{
+    private List<IObserver<IItem>> _observers;
+    private IObserver<IItem> _observer;
+
+    internal Unsubscriber(List<IObserver<IItem>> observers, IObserver<IItem> observer)
+    {
+        this._observers = observers;
+        this._observer = observer;
     }
 
-    public void NotifySubscribers()
+    public void Dispose()
     {
-        Console.WriteLine("BacklogItemEventPublisher: Notifying subscribers...");
-
-        if (item.State == item.ReadyForTestingState)
-        {
-            foreach (var subscriber in Subscribers.FindAll(x => x.TeamMember.Role == Role.TESTER))
-            {
-                subscriber.Update(this);
-            }
-        }
-        
-        foreach (var subscriber in Subscribers)
-        {
-            subscriber.Update(this);
-        }
+        if (_observers.Contains(_observer))
+            _observers.Remove(_observer);
     }
 }

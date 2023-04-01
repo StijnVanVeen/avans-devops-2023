@@ -5,11 +5,11 @@ namespace Avans_DevOps_Domain.SprintStates;
 
 public class EndState : ISprintState
 {
-    private ISprint _sprint;
+
     public string Name { get; }
-    public EndState(ISprint sprint)
+    public EndState()
     {
-        this._sprint = sprint;
+        
         this.Name = "End";
     }
     public void toNextState()

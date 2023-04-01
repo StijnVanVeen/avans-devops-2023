@@ -4,7 +4,7 @@ namespace Avans_DevOps_Domain.Forums;
 
 public class Comment : ForumComponent
 {
-    public ForumComponent Parent { get; set; }
+    public ForumComponent? Parent { get; set; }
     public List<Comment> Comments { get; set; }
     
     public Comment(string description, TeamMember author) : base(description, author)
@@ -23,5 +23,6 @@ public class Comment : ForumComponent
     {
         Console.WriteLine("Adding reply to comment...");
         Comments.Add(comment);
+        base.Publisher.ForumComponentStatus(comment);
     }
 }

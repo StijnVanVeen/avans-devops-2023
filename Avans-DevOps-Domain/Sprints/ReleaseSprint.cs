@@ -26,7 +26,7 @@ public class ReleaseSprint : ISprint
         FinishedState = new FinishedState(this);
         ReviewState = new ReviewState(this);
         ReleaseState = new ReleaseState(this);
-        EndState = new EndState(this);
+        EndState = new EndState();
         
         _name = name;
         _startDate = startDate;

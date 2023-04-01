@@ -12,31 +12,31 @@ public class DoneState : IBacklogItemState
     }
     public void toToDoState()
     {
-        Console.WriteLine("can't go back in states");
+        Console.WriteLine("can't go back in states to todo state");
         throw new IlligalStateTransitionException();
     }
 
     public void toDoingState()
     {
-        Console.WriteLine("can't go back in states");
+        Console.WriteLine("can't go back in states to doing state");
         throw new IlligalStateTransitionException();
     }
 
     public void toReadyForTestingState()
     {
-        Console.WriteLine("can't go back in states");
+        Console.WriteLine("can't go back in states to ready for testing state");
         throw new IlligalStateTransitionException();
     }
 
     public void toTestingState()
     {
-        Console.WriteLine("can't go back in states");
+        Console.WriteLine("can't go back in states to testing state");
         throw new IlligalStateTransitionException();
     }
 
     public void toTestedState()
     {
-        Console.WriteLine("can't go back in states");
+        Console.WriteLine("can't go back in states to tested state");
         throw new IlligalStateTransitionException();
     }
 
@@ -44,5 +44,10 @@ public class DoneState : IBacklogItemState
     {
         Console.WriteLine("can't go to same state");
         throw new IlligalStateTransitionException();
+    }
+
+    public string toString()
+    {
+        return "Done State";
     }
 }
