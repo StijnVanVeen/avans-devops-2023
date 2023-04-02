@@ -1,4 +1,5 @@
 ﻿using Avans_DevOps_Domain.Publisher;
+using Avans_DevOps_Domain.Teams.Members;
 
 namespace Avans_DevOps_Domain.Items;
 
@@ -16,6 +17,7 @@ public abstract class BacklogItem : IItem
     private List<IItem> Items { get; set; }
     public IBacklogItemState State { get; set; }
     public BacklogItemEventPublisher Publisher { get; set; }
+    public TeamMember? Assignee { get; set; }
 
     protected BacklogItem(string title, string description)
     {
@@ -31,6 +33,7 @@ public abstract class BacklogItem : IItem
         Description = description;
         Items = new List<IItem>();
         State = TodoState;
+        Assignee = null;
     }
 
     public void ChangeStateToToDo()

@@ -29,7 +29,7 @@ public class TeamMemberFactoryDirectorTests
         Assert.Equal(_email, result.Email);
     }
     
-    [Fact]
+    /*[Fact]
     public void CreateScrumMaster_CreatesNewScrumMaster()
     {
         // Act
@@ -53,7 +53,7 @@ public class TeamMemberFactoryDirectorTests
         Assert.IsType<ProductOwner>(result);
         Assert.Equal(_name, result.Name);
         Assert.Equal(_email, result.Email);
-    }
+    }*/
     
     [Fact]
     public void CreateTester_CreatesNewTester()

@@ -2,6 +2,7 @@ namespace Avans_DevOps_Domain.Forums;
 
 public class Forum
 {
+    public string Title { get; set; }
     public List<Thread> Threads { get; set; }
 
     public Forum()

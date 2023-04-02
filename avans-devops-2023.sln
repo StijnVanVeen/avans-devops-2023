@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avans-DevOps-Console", "Ava
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avans-DevOps-ProcesCyclusTest", "Avans-DevOps-ProcesCyclusTest\Avans-DevOps-ProcesCyclusTest.csproj", "{7F35ABBD-EFE1-4CB3-B5CF-6EA9C0FCD3A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avans_DevOps_ProcesCyclus2", "Avans_DevOps_ProcesCyclus2\Avans_DevOps_ProcesCyclus2.csproj", "{77C03655-D2C3-453F-A3DA-C4B5BB14A2FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{7F35ABBD-EFE1-4CB3-B5CF-6EA9C0FCD3A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F35ABBD-EFE1-4CB3-B5CF-6EA9C0FCD3A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F35ABBD-EFE1-4CB3-B5CF-6EA9C0FCD3A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C03655-D2C3-453F-A3DA-C4B5BB14A2FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C03655-D2C3-453F-A3DA-C4B5BB14A2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C03655-D2C3-453F-A3DA-C4B5BB14A2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C03655-D2C3-453F-A3DA-C4B5BB14A2FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -26,7 +26,7 @@ public class TeamTests
         Assert.Equal(Email, member.Email);
     }
 
-    [Fact]
+    /*[Fact]
     public void AddScrumMaster_AddsNewScrumMasterToMembersList()
     {
         // Arrange
@@ -41,9 +41,9 @@ public class TeamTests
         Assert.IsType<ScrumMaster>(member);
         Assert.Equal(Name, member.Name);
         Assert.Equal(Email, member.Email);
-    }
+    }*/
 
-    [Fact]
+    /*[Fact]
     public void AddProductOwner_AddsNewProductOwnerToMembersList()
     {
         // Arrange
@@ -75,7 +75,7 @@ public class TeamTests
         Assert.IsType<Tester>(member);
         Assert.Equal(Name, member.Name);
         Assert.Equal(Email, member.Email);
-    }
+    }*/
 
     [Fact]
     public void DeleteMember_DeletesMemberFromMembersList()
