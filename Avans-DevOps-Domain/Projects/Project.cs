@@ -1,5 +1,6 @@
 ﻿using Avans_DevOps_Domain.Backlog;
 using Avans_DevOps_Domain.Forums;
+using Avans_DevOps_Domain.Pipelines;
 using Avans_DevOps_Domain.Sprints;
 using Avans_DevOps_Domain.Teams;
 using Avans_DevOps_Domain.Visitors;
@@ -15,6 +16,7 @@ public class Project : IVisitable
     public ISprint? CurrentSprint { get; set; }
     public IBacklog Backlog { get; set; }
     public Forum Forum { get; set; }
+    public IPipeline Pipeline { get; set; }
     public SprintDirector SprintDirector { get;}
     public TeamMemberFactoryDirector TeamMemberFactoryDirector { get; set; }
     
@@ -28,6 +30,7 @@ public class Project : IVisitable
         Forum = new Forum();
         Forum.Title = Name;
         Backlog = new ProductBacklog();
+        Pipeline = null;
         SprintDirector = new SprintDirector(this);
         TeamMemberFactoryDirector = new TeamMemberFactoryDirector(this);
     }
@@ -42,6 +45,7 @@ public class Project : IVisitable
         Forum = new Forum();
         Forum.Title = Name;
         Backlog = new ProductBacklog();
+        Pipeline = null;
         SprintDirector = new SprintDirector(this);
         TeamMemberFactoryDirector = new TeamMemberFactoryDirector(this);
     }
